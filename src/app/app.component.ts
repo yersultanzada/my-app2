@@ -4,12 +4,22 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <div class="col-md-12">
-      <h2>{{ num }}</h2>
-      <h2>{{ num | appPow: 3 }}</h2>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor = "let car of cars; let i = index">
+          <b>{{ i+1 }}</b> {{ car.name }}
+        </li>
+      </ul>
     </div>
   `
 })
 export class AppComponent {
-  num = 2;
+  cars = [
+    { name: 'Ford' },
+    { name: 'Mers' },
+    { name: 'BMW' },
+    { name: 'Mazda' },
+    { name: 'Ferrari' },
+    { name: 'Audi' }
+  ];
 
 }
