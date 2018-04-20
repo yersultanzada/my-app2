@@ -7,7 +7,7 @@ import 'rxjs/Rx';
   templateUrl: './app.component.html',
   providers: [CarsService]
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
 
   cars = [];
   constructor(private service: CarsService) {}
