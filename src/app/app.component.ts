@@ -1,19 +1,29 @@
-import {Component, OnInit} from '@angular/core';
-import { CarsService } from './cars.service';
-import 'rxjs/Rx';
+import { Component } from '@angular/core';
+import {NgForm} from '@angular/forms';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  providers: [CarsService]
+  styles: [`
+    .has-error input{
+      border: 1px solid red;
+    }
+  `]
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
+  answers = [{
+    type: 'yes',
+    text: 'Да'
+  }, {
+    type: 'no',
+    text: 'Нет'
+  }];
 
-  cars = [];
-  constructor(private service: CarsService) {}
+  defaultAnswer = 'no';
+  defaultCountry = 'ru';
 
-  ngOnInit() {
-    this.cars = this.service.cars;
+  submitForm(form: NgForm) {
+    console.log('Submitted!', form);
   }
-
 }
