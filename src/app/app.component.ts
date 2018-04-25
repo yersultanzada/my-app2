@@ -1,5 +1,5 @@
-import {Component, ViewChild} from '@angular/core';
-import {NgForm} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 
 @Component({
@@ -9,11 +9,9 @@ import {NgForm} from '@angular/forms';
     .has-error input{
       border: 1px solid red;
     }
-  `]
+      `]
 })
-export class AppComponent {
-  @ViewChild('form') form: NgForm;
-
+export class AppComponent implements OnInit{
   answers = [{
     type: 'yes',
     text: 'Да'
@@ -22,22 +20,20 @@ export class AppComponent {
     text: 'Нет'
   }];
 
-  defaultAnswer = 'no';
-  defaultCountry = 'ru';
+  form: FormGroup;
 
-  formData = {};
-  isSubmitted = false;
-
-  addRandEmail() {
-    const randEmail = 'test@mail.ru';
-      this.form.form.patchValue({
-        user: { email: randEmail }
-      });
+  ngOnInit() {
+    this.form = new FormGroup({
+      user: new FormGroup({
+        email: new FormControl('', [Validators.required, Validators.email]),
+        pass: new FormControl('', Validators.required),
+      }),
+      country: new FormControl('ru'),
+      answer: new FormControl('no'),
+    });
   }
 
-  submitForm() {
-    this.isSubmitted = true;
-    this.formData = this.form.value;
-    this.form.reset();
+  onSubmit() {
+    console.log('submitted', this.form);
   }
 }
