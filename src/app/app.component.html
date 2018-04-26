@@ -9,7 +9,7 @@
     <ul class="list-group">
       <li
         class="list-group-item"
-        *ngFor="let car of cars"
+        *ngFor="let car of cars | async"
       >
         <span class="badge float-right" [ngStyle]="{background: car.color, color: 'white'}">
           {{ car.id }}

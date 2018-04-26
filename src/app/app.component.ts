@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
     'grey',
   ];
 
-  cars: Cars[] = [];
+  cars: any;
   carName = '';
   appTitle;
 
@@ -33,16 +33,7 @@ export class AppComponent implements OnInit {
   }
 
   loadCars() {
-    this.carsService
-      .getCars()
-      .subscribe(
-        (cars: Cars[]) => {
-        this.cars = cars;
-    },
-        (error) => {
-          alert(error);
-        }
-        );
+    this.cars = this.carsService.getCars();
   }
 
   addCar() {
