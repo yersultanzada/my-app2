@@ -5,18 +5,13 @@
   "cars": [
     {
       "name": "BMW",
-      "color": "blue",
+      "color": "red",
       "id": 5
     },
     {
       "name": "Audi",
-      "color": "yellow",
+      "color": "red",
       "id": 6
-    },
-    {
-      "name": "Maserati",
-      "color": "grey",
-      "id": 7
     },
     {
       "name": "Rolls-Royce",
