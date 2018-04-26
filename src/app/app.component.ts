@@ -1,39 +1,76 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {CarsService} from './cars.service';
 
+interface Cars {
+  name: string;
+  color: string;
+  id: number;
+}
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styles: [`
-    .has-error input{
-      border: 1px solid red;
-    }
-      `]
+  templateUrl: './app.component.html'
 })
-export class AppComponent implements OnInit{
-  answers = [{
-    type: 'yes',
-    text: 'Да'
-  }, {
-    type: 'no',
-    text: 'Нет'
-  }];
+export class AppComponent implements OnInit {
 
-  form: FormGroup;
+  colors = [
+    'red',
+    'blue',
+    'green',
+    'pink',
+    'yellow',
+    'grey',
+  ];
+
+  cars: Cars[] = [];
+  carName = '';
+  appTitle;
+
+  constructor(private carsService: CarsService) {}
 
   ngOnInit() {
-    this.form = new FormGroup({
-      user: new FormGroup({
-        email: new FormControl('', [Validators.required, Validators.email]),
-        pass: new FormControl('', Validators.required),
-      }),
-      country: new FormControl('ru'),
-      answer: new FormControl('no'),
-    });
+    this.appTitle = this.carsService.getAppTitle();
   }
 
-  onSubmit() {
-    console.log('submitted', this.form);
+  loadCars() {
+    this.carsService
+      .getCars()
+      .subscribe(
+        (cars: Cars[]) => {
+        this.cars = cars;
+    },
+        (error) => {
+          alert(error);
+        }
+        );
   }
+
+  addCar() {
+    this.carsService
+      .addCar(this.carName)
+      .subscribe((car: Cars) => {
+        this.cars.push(car);
+      });
+    this.carName = '';
+  }
+
+  getRandColor() {
+    const num = Math.round(Math.random() * (this.colors.length - 1));
+    return this.colors[num];
+  }
+
+  setNewColor(car: Cars) {
+    this.carsService.changeColor(car, this.getRandColor())
+      .subscribe((data) => {
+        console.log(data);
+      });
+  }
+
+  deleteCar(car: Cars) {
+    this.carsService.deleteCar(car)
+      .subscribe((data) => {
+       this.cars = this.cars.filter(c => c.id !== car.id);
+      });
+  }
+
 }

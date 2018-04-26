@@ -1,0 +1,32 @@
+{
+  "title": {
+    "value": "Менеджер машин"
+  },
+  "cars": [
+    {
+      "name": "BMW",
+      "color": "blue",
+      "id": 5
+    },
+    {
+      "name": "Audi",
+      "color": "yellow",
+      "id": 6
+    },
+    {
+      "name": "Maserati",
+      "color": "grey",
+      "id": 7
+    },
+    {
+      "name": "Rolls-Royce",
+      "color": "yellow",
+      "id": 8
+    },
+    {
+      "name": "Porsche",
+      "color": "red",
+      "id": 9
+    }
+  ]
+}

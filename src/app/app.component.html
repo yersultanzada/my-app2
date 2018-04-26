@@ -1,62 +1,23 @@
 <div class="container">
   <div class="col-xs-8 col-xs-offset-2">
-    <form
-      [formGroup]="form"
-      (ngSubmit)="onSubmit()"
-    >
-      <div formGroupName="user">
-        <div
-          class="form-group"
-          [ngClass]="{'has-error': form.get('user.email').invalid && form.get('user.email').touched}"
-        >
-          <label>Email</label>
-          <input
-            type="text"
-            class="form-control"
-            formControlName="email"
-          >
-          <p *ngIf="form.get('user.email').invalid && form.get('user.email').touched">Введите корректный email</p>
-        </div>
-        <div
-          class="form-group"
-          [ngClass]="{'has-error': form.get('user.pass').invalid && form.get('user.pass').touched}"
-        >
-          <label>Пароль</label>
-          <input
-            type="password"
-            class="form-control"
-            formControlName="pass"
-          >
-          <p *ngIf="form.get('user.pass').invalid && form.get('user.pass').touched">Пароль не должен быть пустым</p>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Выберите страну</label>
-        <select
-          class="form-control"
-          formControlName="country"
-        >
-          <option value="ru">Россия</option>
-          <option value="by">Белоруссия</option>
-          <option value="ua">Украина</option>
-        </select>
-      </div>
-      <div class="radio" *ngFor="let ans of answers">
-        <label>
-          <input
-            type="radio"
-            [value]="ans.type"
-            formControlName="answer"
-          > {{ans.text}}
-        </label>
-      </div>
-      <button
-        class="btn btn-success"
-        type="submit"
-        [disabled]="form.invalid"
-      >Сохранить</button>
-
-    </form>
+    <h1>{{ appTitle | async }}</h1>
+    <input type="text" class="form-control" [(ngModel)]="carName">
+    <hr>
+    <button class="btn btn-primary" (click)="loadCars()">Загрузить машины</button>
+    <button class="btn btn-success" (click)="addCar()">Добавить машину</button>
+    <hr>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let car of cars"
+      >
+        <span class="badge float-right" [ngStyle]="{background: car.color, color: 'white'}">
+          {{ car.id }}
+        </span>
+        {{ car.name }}
+        <button class="btn btn-xs btn-info" (click)="setNewColor(car)">Изменить цвет</button>
+        <button class="btn btn-xs btn-danger" (click)="deleteCar(car)">Удалить машину</button>
+      </li>
+    </ul>
   </div>
-
 </div>
