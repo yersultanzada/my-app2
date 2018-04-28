@@ -1,8 +1,19 @@
 <div class="container">
   <div class="row">
     <ul class="nav nav-pills" style="margin-bottom: 20px">
-      <li class="nav-item"><a class="nav-link active" href="#">Главная</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">Машины</a></li>
+      <li class="nav-item">
+        <a class="nav-link"
+           routerLink="/"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact: true}"
+        >Главная</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"
+           [routerLink]="'/cars'"
+           routerLinkActive="active"
+        >Машины</a>
+      </li>
     </ul>
   </div>
   <div class="row">
