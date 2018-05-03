@@ -11,6 +11,10 @@ import { CarsPageComponent } from './cars-page/cars-page.component';
 import { CarsService } from './cars.service';
 import { AppRoutingModule } from './app-routing.module';
 import { CarPageComponent } from './car-page/car-page.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth-guard.service';
+import { NewPageComponent } from './new-page/new-page.component';
 
 
 
@@ -19,7 +23,9 @@ import { CarPageComponent } from './car-page/car-page.component';
     AppComponent,
     HomePageComponent,
     CarsPageComponent,
-    CarPageComponent
+    CarPageComponent,
+    NotFoundComponent,
+    NewPageComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +34,7 @@ import { CarPageComponent } from './car-page/car-page.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [CarsService],
+  providers: [CarsService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

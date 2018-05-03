@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 
 @Component({
   selector: 'app-car-page',
@@ -14,7 +14,7 @@ export class CarPageComponent implements OnInit {
   color: string;
   hash: string;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     // когда обращаемся в снепшот мы забираем данные только 1 раз
@@ -27,6 +27,21 @@ export class CarPageComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
       this.name = params['name'];
+    });
+
+    this.route.queryParams.subscribe((params: Params) => {
+      this.color = params['color'];
+      this.year = params['year'];
+    });
+  }
+
+  openBentleyPage() {
+    this.router.navigate(['./cars', 8, 'Bentley'], {
+      queryParams: {
+        color: 'pink',
+        year: 1995
+      },
+      fragment: 'pic'
     });
   }
 

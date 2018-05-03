@@ -1,9 +1,9 @@
-<h3>ID машины {{ id }}</h3>
-<h3>Марка машины {{ name }}</h3>
-<h3>Цвет машины {{ color }}</h3>
-<h3>Год машины {{ year }}</h3>
+<h3>ID машины: {{ id }}</h3>
+<h3>Марка машины: {{ name }}</h3>
+<h3>Цвет машины: {{ color }}</h3>
+<h3>Год машины: {{ year }}</h3>
 <h3>{{ hash }}</h3>
 
 <hr>
 
-<h4><a [routerLink]="['/cars', 8, 'Bentley']">Открыть Bentley</a></h4>
+<h4><a (click)="openBentleyPage()">Открыть Bentley</a></h4>
