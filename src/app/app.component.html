@@ -1,27 +1,5 @@
 <div class="container">
-  <div class="row">
-    <ul class="nav nav-pills" style="margin-bottom: 20px">
-      <li class="nav-item">
-        <a class="nav-link"
-           routerLink="/"
-           routerLinkActive="active"
-           [routerLinkActiveOptions]="{exact: true}"
-        >Главная</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link"
-           [routerLink]="'/cars'"
-           routerLinkActive="active"
-        >Машины</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link"
-           [routerLink]="'/new'"
-           routerLinkActive="active"
-        >Новая</a>
-      </li>
-    </ul>
-  </div>
+  <app-header></app-header>
   <div class="row">
     <div class="col-md-12">
       <router-outlet></router-outlet>
