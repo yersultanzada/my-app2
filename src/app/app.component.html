@@ -1,8 +1,4 @@
-<div class="container">
-  <app-header></app-header>
-  <div class="row">
-    <div class="col-md-12">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
-</div>
+<div
+  (click)="changeDivState()"
+  [@clickedDiv]="clickedDivState"
+></div>
