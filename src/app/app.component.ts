@@ -6,13 +6,12 @@ import {
   transition,
   trigger
 } from '@angular/animations';
+import {changeWidthTrigger, divTrigger} from './app.animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  animations: [
-
-  ]
+  animations: [divTrigger, changeWidthTrigger]
 })
 export class AppComponent {
   isVisible = false;
